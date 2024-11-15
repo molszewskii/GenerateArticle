@@ -29,7 +29,7 @@ async function generateHTMLFromArticle(articleText) {
             - Each image should be placed within a <figure> tag, with a <figcaption> below each image that provides a short description, also in the same language as the article.
             - DO NOT include <html>, <head>, <body> tags, or any other header elements.
             - The generated HTML should contain only the content to be inserted between <body> and </body> tags, without additional tags, text blocks, or backticks.
-            
+            - If there are any parts of the article where text has been marked with * (asterisks) for emphasis wrap these parts in <em> tags to emphasize them.
             Here is the article content:
             ${articleText}
         `;
