@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podgląd Artykułu</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.75;
+            margin: 0;
+            padding: 30px; 
+            background-color: #f9f9f9;
+            color: #333;
+            max-width: 100%; 
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #34495e;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        figure {
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        figcaption {
+            font-size: 1em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        em {
+            font-style: italic;
+            color: #8e44ad;
+        }
+
+        h1 + p,
+        h2 + p,
+        h3 + p {
+            text-indent: 30px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2, h3 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("artykul.html")
+                .then(response => {
+                    if (!response.ok) throw new Error("Nie udało się wczytać artykułu");
+                    return response.text();
+                })
+                .then(htmlContent => {
+                    document.body.innerHTML = htmlContent;
+                })
+                .catch(error => {
+                    console.error("Błąd:", error);
+                    document.body.innerHTML = "<p>Nie udało się załadować artykułu.</p>";
+                });
+        });
+    </script>
+</body>
+</html>
