@@ -46,11 +46,22 @@ async function generateHTMLFromArticle(articleText) {
     }
 }
 
+function saveHTMLToFile(htmlContent, outputPath) {
+    fs.writeFile(outputPath, htmlContent, (err) => {
+        if (err) {
+            console.error("Error while saving the file:", err);
+        } else {
+            console.log(`File has been saved as ${outputPath}`);
+        }
+    });
+}
+
 async function main() {
     try {
         const url = 'https://cdn.oxido.pl/hr/Zadanie%20dla%20JJunior%20AI%20Developera%20-%20tresc%20artykulu.txt';
         const articleText = await fetchArticle(url);
         const generatedHTML = await generateHTMLFromArticle(articleText);
+        saveHTMLToFile(generatedHTML, "artykul.html");
     } catch (error) {
         console.error("An error occurred:", error);
     }
