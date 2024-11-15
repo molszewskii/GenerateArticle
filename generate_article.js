@@ -1,21 +1,21 @@
 const fs = require('fs');
 const { OpenAI } = require("openai");
-const axios = require('axios');
 require('dotenv').config();
+const path = require('path');
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-async function fetchArticle(url) {
+async function fetchFile(fileName) {
     try {
-        const response = await axios.get(url);
-        return response.data;
+        const filePath = path.join(__dirname, fileName);
+        const data = await fs.promises.readFile(filePath, 'utf-8');
+        return data;
     } catch (error) {
-        console.error("Error while fetching the article:", error);
+        console.error("Error while reading the file:", error);
     }
 }
-
 async function generateHTMLFromArticle(articleText) {
     try {
         const prompt = `
@@ -58,8 +58,9 @@ function saveHTMLToFile(htmlContent, outputPath) {
 
 async function main() {
     try {
-        const url = 'https://cdn.oxido.pl/hr/Zadanie%20dla%20JJunior%20AI%20Developera%20-%20tresc%20artykulu.txt';
-        const articleText = await fetchArticle(url);
+        const fileName = 'artykul.txt';
+        const articleText = await fetchFile(fileName);
+        console.log(articleText)
         const generatedHTML = await generateHTMLFromArticle(articleText);
         saveHTMLToFile(generatedHTML, "artykul.html");
     } catch (error) {
