@@ -1,0 +1,45 @@
+# Ignoruj katalog node_modules (zależności projektu)
+node_modules/
+
+# Ignoruj pliki lock inne niż package-lock.json (np. dla Yarn)
+.pnpm-lock.yaml
+.yarn.lock
+
+# Ignoruj logi
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignoruj foldery środowiska (np. dla edytorów)
+.env
+.env.local
+.env.*.local
+
+# Ignoruj pliki systemowe (np. MacOS i Windows)
+.DS_Store
+Thumbs.db
+
+# Ignoruj tymczasowe pliki edytorów i IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Ignoruj cache
+.cache/
+out/
+logs/
+
+# Ignoruj buildy i artefakty (jeśli generowane)
+dist/
+build/
+
+# Ignoruj pliki testowe i raporty testów
+coverage/
+*.test.js
+*.spec.js
+
+# Ignoruj inne pliki tymczasowe
+*.log
+*.tmp
