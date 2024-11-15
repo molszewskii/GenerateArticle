@@ -60,7 +60,6 @@ async function main() {
     try {
         const fileName = 'artykul.txt';
         const articleText = await fetchFile(fileName);
-        console.log(articleText)
         const generatedHTML = await generateHTMLFromArticle(articleText);
         saveHTMLToFile(generatedHTML, "artykul.html");
     } catch (error) {
